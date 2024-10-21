@@ -1,0 +1,6 @@
+.myApp {
+  background-color: red;
+}
+.myApp--active {
+  background-color: green;
+}
