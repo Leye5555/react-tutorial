@@ -234,7 +234,7 @@
         dob : "12-12-2009",
         occupation : "software engr"
     }
-    VM2910:1 Uncaught SyntaxError: Identifier 'person' has already been declaredUnderstand this error
+
     let pal = {
         name : "Pal",
         gender : "male",
@@ -262,7 +262,7 @@
         return result;
 
     };
-    VM3331:1 Uncaught SyntaxError: Unexpected token '{'Understand this error
+
     const calculateHours = (days) => {
         const result =  days * 24;
         return result;
@@ -289,10 +289,7 @@
     };
 
     undefined
-    lambda
-    VM3573:1 Uncaught ReferenceError: lambda is not defined
-        at <anonymous>:1:1
-    (anonymous) @ VM3573:1Understand this error
+
     "lambda";
     'lambda'
     const calculateHours = (weeks) =>  (days) => (hours) => {
@@ -332,7 +329,7 @@
     const calcAvg = (...numbers, oops) => {
         console.log(numbers)
     }
-    VM4128:1 Uncaught SyntaxError: Rest parameter must be last formal parameterUnderstand this error
+
     const calcAvg = (fn, numbers) => {
         const sum = fn(...numbers);
     return  sum / numbers.length;
@@ -347,11 +344,7 @@
     calcAvg(sum, [2,4,10,10,20,1000, 200, 1000]);
     280.75
     calcAvg(2, [2,4,10,10,20,1000, 200, 1000]);
-    VM4255:2 Uncaught TypeError: fn is not a function
-        at calcAvg (<anonymous>:2:17)
-        at <anonymous>:1:1
-    calcAvg @ VM4255:2
-    (anonymous) @ VM4587:1Understand this error
+
     calcAvg(sum, [2,4,10,10,20,1000, 200, 1000]);
     280.75
 
