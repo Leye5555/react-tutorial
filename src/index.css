@@ -1,68 +1,63 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+  --green: hsl(75, 94%, 57%);
+  --white: hsl(0, 0%, 100%);
+  --grey-700: hsl(0, 0%, 20%);
+  --grey-800: hsl(0, 0%, 12%);
+  --grey-900: hsl(0, 0%, 8%);
+  --card-width: 350px;
 }
 
 body {
-  margin: 0;
-  display: flex;
+  width: 100%;
+  height: 100%;
+  background-color: var(--grey-900);
+}
+
+.card {
+  width: 100%;
+  max-width: var(--card-width);
+  border-radius: 12px;
+  background-color: var(--grey-800);
+  color: var(--white);
+  display: grid;
   place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  padding: 20px 30px;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+.card img {
+  border-radius: 50%;
+  width: 100px;
+  aspect-ratio: 1/1;
 }
 
-button {
+.card-title {
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+
+.card small {
+  font-size: 12px;
+  color: var(--green);
+}
+
+.card-description {
+  font-size: 14px;
+}
+
+.card-socials {
+  list-style-type: none;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 12px;
+  width: 100%;
+  padding: 0;
+}
+
+.card-socials__items {
+  background-color: var(--grey-700);
+  padding-block: 10px;
+  width: 100%;
+  max-width: 100%;
   border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+  text-align: center;
 }

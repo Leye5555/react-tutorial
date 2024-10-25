@@ -1,49 +1,33 @@
-// import React from "react";
-import "./App.css";
-// import CheckLateness from "./test"; // default
-//import { checkLateness } from "./test"; // named import
-import * as Utils from "./test"; // named import but renamed
+import profile from "./assets/avatar-jessica.jpeg";
 
 function App() {
-  // React.useState("red");
-
-  // function changeColor(event) {
-  //   event.target.classList.add("myApp--active");
-  // }
-
-  const changeColor = (event) => {
-    event.target.classList.add("myApp--active");
-  };
-
-  function showAge() {
-    let age = 2;
-    console.log(this);
-    console.log(age);
-  }
-  showAge();
-
-  const showName = () => {
-    let name = "";
-    console.log(this);
-    console.log(name);
-  };
-
-  showName();
-
-  const oops = Utils.checkLateness("2024-10-24T17:00:00Z");
-  console.log({ oops });
-  function changeColorOut(event) {
-    event.target.classList.remove("myApp--active");
-  }
-  const test = "I am a developer";
-
   return (
-    <div
-      className="myApp"
-      onMouseOver={changeColor}
-      onMouseOut={changeColorOut}
-    >
-      Hello World! {test}
+    <div style={{ display: "flex", gap: "12px" }}>
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+    </div>
+  );
+}
+
+function Card() {
+  return (
+    <div className="card">
+      <img src={profile} alt="profile" />
+      <h3 className="card-title">Jessica Randall</h3>
+      <small>London, United Kingdom</small>
+      <p className="card-description">
+        &ldquo;Frontend Developer, Avid Reader&rdquo;.
+      </p>
+      <ul className="card-socials" type="none">
+        <li className="card-socials__items">Github</li>
+        <li className="card-socials__items">Frontend Mentors</li>
+        <li className="card-socials__items">LinkedIn</li>
+        <li className="card-socials__items">X</li>
+        <li className="card-socials__items">Instagram</li>
+      </ul>
     </div>
   );
 }
