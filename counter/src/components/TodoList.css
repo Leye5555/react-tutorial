@@ -1,0 +1,20 @@
+.todo-layout {
+  display: flex;
+  gap: 20px;
+}
+
+.todo-layout > ul {
+  flex: 0.2;
+}
+
+.todo-layout > form {
+  flex: 1;
+  max-width: 500px;
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+}
+
+.todo-layout > form > * {
+  width: 95%;
+}
