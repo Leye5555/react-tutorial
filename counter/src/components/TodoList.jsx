@@ -4,7 +4,9 @@ import "./TodoList.css";
 const TodoList = () => {
   // state variables
   const [title, setTitle] = useState("");
-  const [text, setText] = useState("");
+  const [isEdit, setIsEdit] = useState(false);
+  const [content, setContent] = useState("");
+  const [todos, setTodos] = useState([]);
 
   //   const [formData, setFormData] = useState({
   //     title: "",
@@ -25,11 +27,28 @@ const TodoList = () => {
     setTitle(event.target.value);
   };
   const handleTextChange = (event) => {
-    setText(event.target.value);
+    setContent(event.target.value);
   };
+
+  const updateTodos = (prevTodos) => {
+    return [...prevTodos, { id: prevTodos.length + 1, title, content }];
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log({ title, text });
+    //
+    setTodos(updateTodos);
+    setTitle("");
+    setContent("");
+    setIsEdit(false);
+  };
+
+  const editTodo = (id) => {
+    setIsEdit(true);
+    const filteredTodo = todos.filter((item) => item.id === id);
+    const todo = filteredTodo[0];
+    setTitle(todo.title);
+    setContent(todo.content);
   };
 
   return (
@@ -37,9 +56,18 @@ const TodoList = () => {
       <h1>My Todos</h1>
       <div className="todo-layout">
         <ul type="none">
-          <li>lorem10</li>
-          <li>lorem10</li>
-          <li>lorem10</li>
+          {todos.length > 0
+            ? todos.map((item, index) => {
+                return (
+                  <li
+                    onClick={() => editTodo(item.id)}
+                    key={item.id ? item.id : index + 1}
+                  >
+                    {item?.title}
+                  </li>
+                );
+              })
+            : null}
         </ul>
         <form onSubmit={handleSubmit}>
           <input
@@ -67,11 +95,11 @@ const TodoList = () => {
             onChange={handleTextChange}
             name="content"
             id=""
-            value={text}
+            value={content}
             rows={10}
             cols={10}
           ></textarea>
-          <button type="submit">Add to do</button>
+          <button type="submit">{isEdit ? "Save Changes" : "Add to do"}</button>
         </form>
       </div>
     </div>

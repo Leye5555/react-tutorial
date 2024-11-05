@@ -7,6 +7,14 @@
   flex: 0.2;
 }
 
+.todo-layout > ul li {
+  text-align: start;
+  cursor: pointer;
+  margin-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.438);
+  text-transform: capitalize;
+}
+
 .todo-layout > form {
   flex: 1;
   max-width: 500px;
