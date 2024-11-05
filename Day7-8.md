@@ -2,7 +2,7 @@
 - Todo List App :
 
   - Users can create to dos
-  - Users can view list of created to dos
-  - Users can click into and view single To do
+  - Users can view the list of created to dos
+  - Users can click into and view a single to do
 
   ![to do list app](./public/todo_2024-11-05.png)
