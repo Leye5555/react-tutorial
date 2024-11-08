@@ -13,6 +13,10 @@
   margin-bottom: 20px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.438);
   text-transform: capitalize;
+  width: max-content;
+  display: flex;
+  gap: 20px;
+  align-items: center;
 }
 
 .todo-layout > form {

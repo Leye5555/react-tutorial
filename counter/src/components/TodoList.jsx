@@ -6,22 +6,8 @@ const TodoList = () => {
   const [title, setTitle] = useState("");
   const [isEdit, setIsEdit] = useState(false);
   const [content, setContent] = useState("");
+  const [todoId, setTodoId] = useState("");
   const [todos, setTodos] = useState([]);
-
-  //   const [formData, setFormData] = useState({
-  //     title: "",
-  //     content: "",
-  //     email: "",
-  //     phone: "",
-  //   });
-
-  // functions
-  //   const handleChange = (event) => {
-  //     setFormData((prev) => ({
-  //       ...prev,
-  //       [event.target.name]: event.target.value,
-  //     }));
-  //   };
 
   const handleChange = (event) => {
     setTitle(event.target.value);
@@ -31,7 +17,17 @@ const TodoList = () => {
   };
 
   const updateTodos = (prevTodos) => {
-    return [...prevTodos, { id: prevTodos.length + 1, title, content }];
+    if (!todoId) {
+      return [...prevTodos, { id: prevTodos.length + 1, title, content }];
+    }
+    let editedTodos = prevTodos.map((item) => {
+      if (item.id === todoId) {
+        return { ...item, title, content };
+      }
+      return item;
+    });
+
+    return editedTodos;
   };
 
   const handleSubmit = (event) => {
@@ -40,15 +36,27 @@ const TodoList = () => {
     setTodos(updateTodos);
     setTitle("");
     setContent("");
+    setTodoId("");
     setIsEdit(false);
+    console.log(todos);
   };
 
   const editTodo = (id) => {
     setIsEdit(true);
     const filteredTodo = todos.filter((item) => item.id === id);
     const todo = filteredTodo[0];
+    setTodoId(id);
     setTitle(todo.title);
     setContent(todo.content);
+  };
+
+  const deleteTodo = (id) => {
+    setTitle("");
+    setContent("");
+    setTodoId("");
+    setTodos((prev) => {
+      return prev.filter((item) => item.id !== id);
+    });
   };
 
   return (
@@ -59,11 +67,13 @@ const TodoList = () => {
           {todos.length > 0
             ? todos.map((item, index) => {
                 return (
-                  <li
-                    onClick={() => editTodo(item.id)}
-                    key={item.id ? item.id : index + 1}
-                  >
-                    {item?.title}
+                  <li key={item.id ? item.id : index + 1}>
+                    <span tabIndex={0} onClick={() => editTodo(item.id)}>
+                      {item?.title}
+                    </span>{" "}
+                    <button type="button" onClick={() => deleteTodo(item.id)}>
+                      Delete
+                    </button>
                   </li>
                 );
               })
