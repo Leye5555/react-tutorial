@@ -7,7 +7,12 @@ const TodoList = () => {
   const [isEdit, setIsEdit] = useState(false);
   const [content, setContent] = useState("");
   const [todoId, setTodoId] = useState("");
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState(() => {
+    const storedToDos = localStorage.getItem("todos")
+      ? JSON.parse(localStorage.getItem("todos"))
+      : [];
+    return storedToDos;
+  });
 
   const handleChange = (event) => {
     setTitle(event.target.value);
@@ -18,7 +23,12 @@ const TodoList = () => {
 
   const updateTodos = (prevTodos) => {
     if (!todoId) {
-      return [...prevTodos, { id: prevTodos.length + 1, title, content }];
+      const temporaryTodos = [
+        ...prevTodos,
+        { id: prevTodos.length + 1, title, content },
+      ];
+      localStorage.setItem("todos", JSON.stringify(temporaryTodos));
+      return temporaryTodos;
     }
     let editedTodos = prevTodos.map((item) => {
       if (item.id === todoId) {
@@ -26,7 +36,7 @@ const TodoList = () => {
       }
       return item;
     });
-
+    localStorage.setItem("todos", JSON.stringify(editedTodos));
     return editedTodos;
   };
 
@@ -34,10 +44,12 @@ const TodoList = () => {
     event.preventDefault();
     //
     setTodos(updateTodos);
+
     setTitle("");
     setContent("");
     setTodoId("");
     setIsEdit(false);
+
     console.log(todos);
   };
 
