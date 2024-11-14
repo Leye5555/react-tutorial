@@ -43,6 +43,7 @@ const TodoList = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     //
+    if (title === "" || content === "") return;
     setTodos(updateTodos);
 
     setTitle("");
@@ -67,6 +68,10 @@ const TodoList = () => {
     setContent("");
     setTodoId("");
     setTodos((prev) => {
+      localStorage.setItem(
+        "todos",
+        JSON.stringify(prev.filter((item) => item.id !== id))
+      );
       return prev.filter((item) => item.id !== id);
     });
   };
