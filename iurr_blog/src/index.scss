@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.mask {
+  position: relative;
+}
+.mask::after {
+  background-image: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.251),
+    rgba(0, 0, 0, 0.768)
+  );
+  content: "";
+  position: absolute;
+  inset: 0;
+}
