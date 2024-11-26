@@ -15,3 +15,24 @@
   position: absolute;
   inset: 0;
 }
+
+.bookmarks {
+  position: relative;
+}
+
+.bookmarks span {
+  position: absolute;
+  top: -2px;
+  right: 0;
+  color: white;
+  background-color: rgb(73, 60, 254);
+  padding: 2px;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: max-content;
+  min-height: max-content;
+}
